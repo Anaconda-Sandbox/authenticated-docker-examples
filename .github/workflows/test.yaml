@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  build:
-    name: Build Docker image
+  test:
+    name: Test registered build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
