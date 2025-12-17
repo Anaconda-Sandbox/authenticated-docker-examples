@@ -20,11 +20,12 @@ The example requires a local installation of `conda` with the `anaconda-auth` pa
 conda install --name base anaconda-auth
 ```
 
-## Building the image
+## Building the images
 
-The commands to build the image are stored in [`Makefile`](./Makefile).
+The commands to build the images are stored in [`Makefile`](./Makefile).
+By default all of the images in the [`./examples`](.examples) directory.
 
-To build the image:
+To build the images:
 
 ```shell
 make build
@@ -32,13 +33,13 @@ make build
 
 ## Running the service
 
-You ran also build and run the service locally using `docker-compose` (if that is installed):
+You ran also build and run the services locally using `docker-compose` (if that is installed):
 
 ```shell
 make up
 ```
 
-You can then access the service by visiting http://localhost:8000 in your web browser.
+You can then access the services by visiting e.g. http://localhost:8000 in your web browser.
 
 You can also check with a tool like `curl`:
 
