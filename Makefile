@@ -28,3 +28,9 @@ test:  # Build the test docker image
 		--file ./testing/$(dockerfile) \
 		. ; \
 	)
+
+test-dotenv:  # Build the test docker image passing secret in a .env file
+	docker build \
+		--secret id=dotenv,src=./docker.env \
+		--file ./testing/dotenv.Dockerfile \
+		.
