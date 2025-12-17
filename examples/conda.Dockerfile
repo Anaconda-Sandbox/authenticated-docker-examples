@@ -1,15 +1,15 @@
 # Stage 1: Use the miniconda base image to create a new conda environment for our runtime
 FROM continuumio/miniconda3:25.3.1-1 AS builder
 
-# Copy environment file(s) only, for better caching
-COPY ./environment.yml ./environment.yml
-
 # Install the required tools
 RUN conda install \
     --name base \
     --channel https://repo.anaconda.cloud/repo/anaconda-tools \
     --override-channels \
     anaconda-registration
+
+# Copy environment file(s) only, for better caching
+COPY ./environment.yml ./environment.yml
 
 # Create the conda environment
 #
