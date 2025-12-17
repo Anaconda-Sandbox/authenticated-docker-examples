@@ -3,6 +3,12 @@ name: Test
 on:
   push:
 
+# Queue jobs to ensure that only newer code is deployed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel older jobs if we're not on main
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     name: Build Docker image
