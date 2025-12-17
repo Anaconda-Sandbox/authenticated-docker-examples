@@ -1,8 +1,15 @@
 SHELL := /bin/bash -o pipefail -o errexit
 
-build:  # Build the docker image
-	ANACONDA_AUTH_API_KEY=$$(anaconda auth api-key) \
-	docker build --secret id=ANACONDA_AUTH_API_KEY .
+EXAMPLE_DOCKERFILES := conda.Dockerfile 
+
+build:  # Build the example docker image
+	$(foreach dockerfile,$(EXAMPLE_DOCKERFILES), \
+	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \
+	docker build \
+		--secret id=ANACONDA_AUTH_API_KEY \
+		--file ./examples/$(dockerfile) \
+		. ; \
+	)
 
 up:  # Run the service using docker-compose
 	ANACONDA_AUTH_API_KEY=$$(anaconda auth api-key) \
