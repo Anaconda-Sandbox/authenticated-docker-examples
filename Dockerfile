@@ -4,8 +4,19 @@ FROM continuumio/miniconda3:25.3.1-1 AS builder
 # Copy environment file(s) only, for better caching
 COPY ./environment.yml ./environment.yml
 
+# Install the required tools
+RUN conda install \
+    --name base \
+    --channel https://repo.anaconda.cloud/repo/anaconda-tools \
+    --override-channels \
+    anaconda-registration
+
 # Create the conda environment
-RUN conda env create \
+#
+# The ANACONDA_AUTH_API_KEY must be passed in as a secret, like:
+#   docker build --secret id=ANACONDA_AUTH_API_KEY
+RUN --mount=type=secret,id=ANACONDA_AUTH_API_KEY \
+  conda env create \
   --prefix /env \
   --file environment.yml
 
