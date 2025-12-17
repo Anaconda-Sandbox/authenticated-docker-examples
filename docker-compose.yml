@@ -1,11 +1,20 @@
 services:
-  api:
+  api-conda:
     build:
+      dockerfile: ./examples/conda.Dockerfile
       context: .
       secrets:
       - ANACONDA_AUTH_API_KEY
     ports:
     - 8000:8000
+  api-conda-lock:
+    build:
+      dockerfile: ./examples/conda-lock.Dockerfile
+      context: .
+      secrets:
+      - ANACONDA_AUTH_API_KEY
+    ports:
+    - 8001:8000
 
 secrets:
   ANACONDA_AUTH_API_KEY:
