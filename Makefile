@@ -1,6 +1,6 @@
 SHELL := /bin/bash -o pipefail -o errexit
 
-EXAMPLE_DOCKERFILES := conda.Dockerfile 
+EXAMPLE_DOCKERFILES := conda.Dockerfile conda-lock.Dockerfile
 
 build:  # Build the example docker image
 	$(foreach dockerfile,$(EXAMPLE_DOCKERFILES), \
