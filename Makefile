@@ -5,4 +5,5 @@ build:  # Build the docker image
 	docker build --secret id=ANACONDA_AUTH_API_KEY .
 
 up:  # Run the service using docker-compose
-	ANACONDA_AUTH_API_KEY=$$(anaconda auth api-key) docker compose up --build api -d
+	ANACONDA_AUTH_API_KEY=$$(anaconda auth api-key) \
+	docker compose up --build --detach
