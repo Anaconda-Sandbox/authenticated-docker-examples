@@ -1,0 +1,21 @@
+name: Build
+on:
+  push:
+
+# Queue jobs to ensure that only newer code is deployed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel older jobs if we're not on main
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      - name: Build
+        run: |
+          make build

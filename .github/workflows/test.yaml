@@ -1,0 +1,24 @@
+# Run a special docker build to test the authentication behavior via our test plugin mechanism
+name: Test
+on:
+  push:
+
+# Queue jobs to ensure that only newer code is deployed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel older jobs if we're not on main
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  test:
+    name: Test registered build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      - name: Run test build
+        run: |
+          make test
+        env:
+          ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}

@@ -1,0 +1,7 @@
+# Generated build output for local plugin package
+__pycache__/
+*.egg-info
+testing/*/build/
+
+# Local conda environment
+env/
