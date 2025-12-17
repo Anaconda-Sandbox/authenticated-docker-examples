@@ -33,5 +33,5 @@ jobs:
       - name: Run test build
         run: |
           make test-conda-lock
-        # env:
-        #   ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
+        env:
+          ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
