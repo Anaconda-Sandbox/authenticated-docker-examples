@@ -12,9 +12,11 @@ lock:  # Generate conda-lock file
 	conda lock
 
 test:  # Build the test docker image
-	cd ./testing && \
 	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \
-	docker build --secret id=ANACONDA_AUTH_API_KEY .
+	docker build \
+	  --secret id=ANACONDA_AUTH_API_KEY \
+	  --file ./testing/conda.Dockerfile \
+	  .
 
 test-conda-lock:  # Build the test docker image using conda-lock
 	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \
