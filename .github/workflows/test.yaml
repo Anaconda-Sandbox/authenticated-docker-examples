@@ -20,3 +20,5 @@ jobs:
       - name: Run test build
         run: |
           make test
+        env:
+          ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
