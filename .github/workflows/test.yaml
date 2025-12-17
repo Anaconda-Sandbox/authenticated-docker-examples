@@ -20,5 +20,3 @@ jobs:
       - name: Run test build
         run: |
           make test
-        env:
-          ANACONDA_TEST_HEADER: "user:unregistered"
