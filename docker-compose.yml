@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+      secrets:
+      - ANACONDA_AUTH_API_KEY
+    ports:
+    - 8000:8000
+
+secrets:
+  ANACONDA_AUTH_API_KEY:
+    environment: ANACONDA_AUTH_API_KEY
