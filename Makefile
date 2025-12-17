@@ -11,16 +11,13 @@ up:  # Run the service using docker-compose
 lock:  # Generate conda-lock file
 	conda lock
 
-test:  # Build the test docker image
-	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \
-	docker build \
-	  --secret id=ANACONDA_AUTH_API_KEY \
-	  --file ./testing/conda.Dockerfile \
-	  .
+TEST_DOCKERFILES := conda.Dockerfile conda-lock.Dockerfile
 
-test-conda-lock:  # Build the test docker image using conda-lock
+test:  # Build the test docker image
+	$(foreach dockerfile,$(TEST_DOCKERFILES), \
 	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \
 	docker build \
-	  --secret id=ANACONDA_AUTH_API_KEY \
-	  --file ./testing/conda-lock.Dockerfile \
-	  .
+		--secret id=ANACONDA_AUTH_API_KEY \
+		--file ./testing/$(dockerfile) \
+		. ; \
+	)

@@ -11,27 +11,21 @@ concurrency:
 
 jobs:
   test:
-    name: Test registered build
-    runs-on: ubuntu-latest
+    name: Test registered build (${{ matrix.test-case }})
+    runs-on:
+      labels: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        test-case:
+        - conda
+        - conda-lock
     steps:
       - name: Checkout
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-
       - name: Run test build
         run: |
           make test
         env:
-          ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
-
-  test-conda-lock:
-    name: Test registered build (conda-lock)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-
-      - name: Run test build
-        run: |
-          make test-conda-lock
-        env:
+          TEST_DOCKERFILES: ${{ matrix.test-case }}.Dockerfile
           ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
