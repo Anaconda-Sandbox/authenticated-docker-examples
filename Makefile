@@ -8,6 +8,9 @@ up:  # Run the service using docker-compose
 	ANACONDA_AUTH_API_KEY=$$(anaconda auth api-key) \
 	docker compose up --build --detach
 
+lock:  # Generate conda-lock file
+	conda lock
+
 test:  # Build the test docker image
 	cd ./testing && \
 	ANACONDA_AUTH_API_KEY=$${ANACONDA_AUTH_API_KEY:-$$(anaconda auth api-key)} \

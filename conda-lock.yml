@@ -13,9 +13,9 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: 16871f92b85b693c76cf2e763cec47759b7376340e7315627e9cda2a03d856a4
-    osx-arm64: 40c80c309337083488b251d07aa1ff65132d7638e22400c2fc2ac5ec3c6c4f9d
-    linux-aarch64: 94af4a57e46bebb65f4167ea4c29ad644d2e5bb07b742aa4029c173c4377dcf8
+    linux-64: 4aab81c7b21b6c7b83c37ff2e7612b0d537e17e3e0623752b86ec31f165ff29d
+    linux-aarch64: be5cd1b697847e2a68ffedb7491f3db2cd9f1863bedb016ba71d0aad66dba7ef
+    osx-arm64: fb07bded551fac23fa5f6a3e4e1f4642e2e19acbfbb52882a483eab8a24005cf
   channels:
   - url: defaults
     used_env_vars: []
@@ -302,6 +302,36 @@ package:
   hash:
     md5: 7ac45ddb190136a57ad9b02e7e365ec0
     sha256: 8375ddb41ba02c49944570c7925beb8d66852392293ee5d57842c4e9d36b425b
+  category: main
+  optional: false
+- name: expat
+  version: 2.7.3
+  manager: conda
+  platform: linux-64
+  dependencies:
+    __glibc: '>=2.28,<3.0.a0'
+    libexpat: 2.7.3
+    libgcc: '>=14'
+    libstdcxx: '>=14'
+  url: https://repo.anaconda.com/pkgs/main/linux-64/expat-2.7.3-h7354ed3_4.conda
+  hash:
+    md5: ab93756615e5932b7be64f44f57d9801
+    sha256: c44273608ba06e9c749a34a35e657d2e88fc65b3496ad91155cea6cb803a7579
+  category: main
+  optional: false
+- name: expat
+  version: 2.7.3
+  manager: conda
+  platform: linux-aarch64
+  dependencies:
+    __glibc: '>=2.28,<3.0.a0'
+    libexpat: 2.7.3
+    libgcc: '>=14'
+    libstdcxx: '>=14'
+  url: https://repo.anaconda.com/pkgs/main/linux-aarch64/expat-2.7.3-h5b11e9f_4.conda
+  hash:
+    md5: 0a6bc686722163dc735a5f0004e34337
+    sha256: 5675772c57408ce8a79ae4ddb78a9a2f70787f57d7c0c515d243c800dd8e118d
   category: main
   optional: false
 - name: expat
@@ -985,83 +1015,81 @@ package:
   category: main
   optional: false
 - name: python
-  version: 3.13.11
+  version: 3.13.1
   manager: conda
   platform: linux-64
   dependencies:
-    __glibc: '>=2.28,<3.0.a0'
     bzip2: '>=1.0.8,<2.0a0'
+    expat: '>=2.6.3,<3.0a0'
     ld_impl_linux-64: '>=2.35.1'
-    libexpat: '>=2.7.3,<3.0a0'
     libffi: '>=3.4,<4.0a0'
-    libgcc: '>=14'
+    libgcc-ng: '>=11.2.0'
     libmpdec: '>=4.0.0,<5.0a0'
     libuuid: '>=1.41.5,<2.0a0'
     ncurses: '>=6.4,<7.0a0'
-    openssl: '>=3.0.18,<4.0a0'
+    openssl: '>=3.0.15,<4.0a0'
     python_abi: '*'
-    readline: '>=8.2,<9.0a0'
-    sqlite: '>=3.50.2,<4.0a0'
-    tk: '>=8.6.15,<8.7.0a0'
+    readline: '>=8.1.2,<9.0a0'
+    sqlite: '>=3.45.3,<4.0a0'
+    tk: '>=8.6.14,<8.7.0a0'
     tzdata: ''
-    xz: '>=5.6.4,<6.0a0'
-    zlib: '>=1.2.13,<2.0a0'
-  url: https://repo.anaconda.com/pkgs/main/linux-64/python-3.13.11-hcf712cf_100_cp313.conda
+    xz: '>=5.4.6,<6.0a0'
+    zlib: '>=1.2.13,<2.0.0a0'
+  url: https://repo.anaconda.com/pkgs/main/linux-64/python-3.13.1-hf623796_100_cp313.conda
   hash:
-    md5: 059847e0de062cd6dbb7917e4b161b4a
-    sha256: 9499fa9e6fe1314c5677c144d30dcf7d03a8629df682a263d8065c40db0aaf8c
+    md5: 9159d14122892f226415ae401c2d12bd
+    sha256: a62d80dbb44f0771a7849ddb68c6a7e30268e2762411ad9c712b7c55722758e4
   category: main
   optional: false
 - name: python
-  version: 3.13.11
+  version: 3.13.1
   manager: conda
   platform: linux-aarch64
   dependencies:
-    __glibc: '>=2.28,<3.0.a0'
     bzip2: '>=1.0.8,<2.0a0'
+    expat: '>=2.6.3,<3.0a0'
     ld_impl_linux-aarch64: '>=2.35.1'
-    libexpat: '>=2.7.3,<3.0a0'
     libffi: '>=3.4,<4.0a0'
-    libgcc: '>=14'
+    libgcc-ng: '>=11.2.0'
     libmpdec: '>=4.0.0,<5.0a0'
     libuuid: '>=1.41.5,<2.0a0'
     ncurses: '>=6.4,<7.0a0'
-    openssl: '>=3.0.18,<4.0a0'
+    openssl: '>=3.0.15,<4.0a0'
     python_abi: '*'
-    readline: '>=8.2,<9.0a0'
-    sqlite: '>=3.50.2,<4.0a0'
-    tk: '>=8.6.15,<8.7.0a0'
+    readline: '>=8.1.2,<9.0a0'
+    sqlite: '>=3.45.3,<4.0a0'
+    tk: '>=8.6.14,<8.7.0a0'
     tzdata: ''
-    xz: '>=5.6.4,<6.0a0'
-    zlib: '>=1.2.13,<2.0a0'
-  url: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.13.11-h5ef2274_100_cp313.conda
+    xz: '>=5.4.6,<6.0a0'
+    zlib: '>=1.2.13,<2.0.0a0'
+  url: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.13.1-hc5ec5e8_100_cp313.conda
   hash:
-    md5: 11df0b3f30f088faf98c98cc1211431e
-    sha256: 9a1880a07a0f65dbf670e8d694794f01f527a1c1a3a4cb087a9e061310637305
+    md5: ee2502083a09f717046d85f58dadc7a4
+    sha256: 8082351c431f3b409fc51c176d2ba3b706419543ca6ea88c3b92e38f3def9b22
   category: main
   optional: false
 - name: python
-  version: 3.13.5
+  version: 3.13.1
   manager: conda
   platform: osx-arm64
   dependencies:
     bzip2: '>=1.0.8,<2.0a0'
-    expat: '>=2.7.1,<3.0a0'
+    expat: '>=2.6.3,<3.0a0'
     libffi: '>=3.4,<4.0a0'
     libmpdec: '>=4.0.0,<5.0a0'
     ncurses: '>=6.4,<7.0a0'
-    openssl: '>=3.0.16,<4.0a0'
+    openssl: '>=3.0.15,<4.0a0'
     python_abi: '*'
-    readline: '>=8.2,<9.0a0'
+    readline: '>=8.1.2,<9.0a0'
     sqlite: '>=3.45.3,<4.0a0'
     tk: '>=8.6.14,<8.7.0a0'
     tzdata: ''
-    xz: '>=5.6.4,<6.0a0'
+    xz: '>=5.4.6,<6.0a0'
     zlib: '>=1.2.13,<2.0.0a0'
-  url: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.13.5-h2eb94d5_100_cp313.conda
+  url: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.13.1-h4862095_100_cp313.conda
   hash:
-    md5: 3ed285f818e71b4c0410e9820da1cf8a
-    sha256: 76d24ed3893166a935c903dcc89f5244fbe92bd55372c6d403d8bc9be1642f96
+    md5: 6bba59f6ed4af1bce3d6ab7a97a58ff7
+    sha256: 70f65ba49532bc91c1674d732520ee89019fbc8eaea5a0489d721ac14287d2fb
   category: main
   optional: false
 - name: python_abi

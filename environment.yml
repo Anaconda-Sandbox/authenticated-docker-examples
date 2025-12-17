@@ -1,4 +1,10 @@
+channels:
+- defaults
 dependencies:
 - python=3.13.1
 - fastapi
 - uvicorn
+platforms:
+- linux-64
+- linux-aarch64
+- osx-arm64
