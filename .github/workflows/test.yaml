@@ -39,7 +39,9 @@ jobs:
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
       - name: Generate docker.env file
         run: |
-          touch ./docker.env
+          echo "ANACONDA_AUTH_API_KEY=${{ env.ANACONDA_AUTH_API_KEY }}" > ./docker.env
+        env:
+          ANACONDA_AUTH_API_KEY: ${{ secrets.ANACONDA_AUTH_API_KEY }}
       - name: Run test build
         run: |
           make test-dotenv
